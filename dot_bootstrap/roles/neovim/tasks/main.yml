@@ -1,0 +1,23 @@
+---
+- name: Install npm global packages
+  community.general.npm:
+    name: "{{ item }}"
+    global: true
+  loop:
+    - prettier
+    - markdown-toc
+    - markdownlint-cli2
+    - "@mermaid-js/mermaid-cli"
+
+- name: Install python neovim module
+  ansible.builtin.pip:
+    name: neovim
+    extra_args: --user
+  become: false
+
+- name: Install treesitter parsers
+  ansible.builtin.command:
+    cmd: nvim --headless +"TSInstall! css latex scss svelte typst vue" +qa
+    creates: "~/.local/share/nvim/site/parser/vue.so"
+  become: false
+  changed_when: false

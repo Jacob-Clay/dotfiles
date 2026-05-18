@@ -1,0 +1,8 @@
+packages:
+  - lazygit
+  - nodejs
+  - npm
+  - python3-pip
+  - luarocks
+  - golang
+  - default-jre

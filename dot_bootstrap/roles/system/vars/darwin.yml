@@ -1,0 +1,7 @@
+packages:
+  - lazygit
+  - node
+  - luarocks
+  - go
+  - tectonic
+
