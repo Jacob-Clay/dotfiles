@@ -1,0 +1,26 @@
+// ────────────── Input Configuration ──────────────
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+
+input {
+    keyboard {
+        xkb {
+	    layout "us, de" // add English and German as layouts
+            options "grp:win_space_toggle, caps:escape" // Windows(super) and Space toggles between layouts
+            //also Remaps Caps Lock to Escape key
+        }
+
+        numlock // Enable numlock on startup
+    }
+
+    touchpad {
+        tap // Enable tap-to-click
+        natural-scroll // Enable natural (macOS-style) scrolling
+	dwt  // Disable While Typing
+    }
+
+    mouse 
+
+
+    focus-follows-mouse // Automatically focus windows under the mouse pointer
+    workspace-auto-back-and-forth // Enable workspace back & forth switching
+}
