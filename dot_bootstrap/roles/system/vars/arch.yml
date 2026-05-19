@@ -3,6 +3,7 @@ packages:
   - nodejs
   - npm
   - python-pip
+  - python-pynvim
   - luarocks
   - go
   - java-runtime

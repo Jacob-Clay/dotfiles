@@ -9,11 +9,12 @@
     - markdownlint-cli2
     - "@mermaid-js/mermaid-cli"
 
-- name: Install python neovim module
+- name: Install python neovim module (Debian/Fedora)
   ansible.builtin.pip:
     name: neovim
     extra_args: --user
   become: false
+  when: ansible_facts['os_family'] != "Archlinux" and ansible_facts['os_family] != "Darwin"
 
 - name: Install treesitter parsers
   ansible.builtin.command:

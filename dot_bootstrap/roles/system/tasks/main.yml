@@ -2,8 +2,8 @@
 - name: Load OS specific vars
   ansible.builtin.include_vars: "{{ item }}"
   with_first_found:
-    - "{{ ansible_distribution | lower }}.yml"
-    - "{{ ansible_os_family | lower }}.yml"
+    - "{{ ansible_facts['distribution'] | lower }}.yml"
+    - "{{ ansible_facts['os_family'] | lower }}.yml"
     - "arch.yml"  # fallback for cachyos, endeavouros etc
 
 - name: Update package cache and install (Arch)
@@ -11,31 +11,31 @@
     name: "{{ packages }}"
     state: present
     update_cache: true
-  when: ansible_os_family == "Archlinux"
+  when: ansible_facts['os_family'] == "Archlinux"
 
 - name: Install packages (Debian)
   ansible.builtin.apt:
     name: "{{ packages }}"
     state: present
     update_cache: true
-  when: ansible_os_family == "Debian"
+  when: ansible_facts['os_family'] == "Debian"
 
 - name: Install packages (Fedora)
   ansible.builtin.dnf:
     name: "{{ packages }}"
     state: present
-  when: ansible_os_family == "RedHat"
+  when: ansible_facts['os_family'] == "RedHat"
 
 - name: Install packages (macOS)
   community.general.homebrew:
     name: "{{ packages }}"
     state: present
-  when: ansible_os_family == "Darwin"
+  when: ansible_facts['os_family'] == "Darwin"
 
 # tectonic fallback for distros where it's not in repos
 - name: Install tectonic via cargo (Debian fallback)
   ansible.builtin.command:
     cmd: cargo install tectonic
     creates: "~/.cargo/bin/tectonic"
-  when: ansible_os_family == "Debian"
+  when: ansible_facts['os_family'] == "Debian"
   become: false
