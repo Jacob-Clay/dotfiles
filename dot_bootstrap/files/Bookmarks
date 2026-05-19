@@ -1,0 +1,227 @@
+{
+   "checksum": "d1e7195513ece1163f6919c7cb91b53e",
+   "roots": {
+      "bookmark_bar": {
+         "children": [
+            {
+               "children": [
+                  {
+                     "date_added": "13414337089000000",
+                     "date_last_used": "0",
+                     "guid": "9519ab8c-36b1-41fb-9696-e8d282f68254",
+                     "id": "5",
+                     "meta_info": {
+                        "power_bookmark_meta": ""
+                     },
+                     "name": "pve - Proxmox",
+                     "type": "url",
+                     "url": "https://pve.tail22c550.ts.net/#v1:0:18:4:::::::"
+                  },
+                  {
+                     "date_added": "13414337092000000",
+                     "date_last_used": "0",
+                     "guid": "3c5d126e-a014-4831-a977-303c1d03396b",
+                     "id": "6",
+                     "meta_info": {
+                        "power_bookmark_meta": ""
+                     },
+                     "name": "Router",
+                     "type": "url",
+                     "url": "http://192.168.178.1/"
+                  },
+                  {
+                     "date_added": "13414337094000000",
+                     "date_last_used": "0",
+                     "guid": "d2143854-8f4f-4ee3-be70-c9fb1b252b2d",
+                     "id": "7",
+                     "meta_info": {
+                        "power_bookmark_meta": ""
+                     },
+                     "name": "Pi-hole pihole",
+                     "type": "url",
+                     "url": "http://192.168.178.3/admin/login"
+                  },
+                  {
+                     "date_added": "13414337087000000",
+                     "date_last_used": "0",
+                     "guid": "b8ffc9c7-a3c0-456d-b55f-f314e297d570",
+                     "id": "8",
+                     "meta_info": {
+                        "power_bookmark_meta": ""
+                     },
+                     "name": "Tailscale",
+                     "type": "url",
+                     "url": "https://login.tailscale.com/admin/machines"
+                  },
+                  {
+                     "date_added": "13413571854000000",
+                     "date_last_used": "0",
+                     "guid": "2f603311-4e73-423b-867c-053b70f45c77",
+                     "id": "9",
+                     "meta_info": {
+                        "power_bookmark_meta": ""
+                     },
+                     "name": "Immich",
+                     "type": "url",
+                     "url": "https://immich.tail22c550.ts.net/photos"
+                  }
+               ],
+               "date_added": "13415706748000000",
+               "date_last_used": "0",
+               "date_modified": "13419513417000000",
+               "guid": "10895a61-d776-4d4a-8a78-0f3e9d0dd991",
+               "id": "4",
+               "name": "Home Server",
+               "type": "folder"
+            },
+            {
+               "children": [
+                  {
+                     "date_added": "13415706685000000",
+                     "date_last_used": "0",
+                     "guid": "55174084-84c7-4474-aec0-4af734492112",
+                     "id": "11",
+                     "meta_info": {
+                        "power_bookmark_meta": ""
+                     },
+                     "name": "VimHero",
+                     "type": "url",
+                     "url": "https://www.vim-hero.com/"
+                  },
+                  {
+                     "date_added": "13415552561000000",
+                     "date_last_used": "0",
+                     "guid": "7d3b8c96-0b64-44be-ba04-dcd8ae9131bb",
+                     "id": "12",
+                     "meta_info": {
+                        "power_bookmark_meta": ""
+                     },
+                     "name": "VIM Adventures",
+                     "type": "url",
+                     "url": "https://ai79.me/"
+                  }
+               ],
+               "date_added": "13415706722000000",
+               "date_last_used": "0",
+               "date_modified": "13419513417000000",
+               "guid": "6d1f70f4-4e57-42e5-a87b-510443c24f62",
+               "id": "10",
+               "name": "Vim",
+               "type": "folder"
+            },
+            {
+               "date_added": "13414968920000000",
+               "date_last_used": "0",
+               "guid": "188d1e11-8326-4e6e-ae00-6b2eba113ada",
+               "id": "13",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Rätselportal",
+               "type": "url",
+               "url": "https://logic-masters.de/Raetselportal/"
+            },
+            {
+               "date_added": "13414337098000000",
+               "date_last_used": "0",
+               "guid": "63eb275e-bfe6-440d-861b-a7e0427d3e94",
+               "id": "14",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Moodle",
+               "type": "url",
+               "url": "https://moodle.informatik.tu-darmstadt.de/"
+            },
+            {
+               "date_added": "13415720852000000",
+               "date_last_used": "0",
+               "guid": "8f651022-402c-4dd9-a49f-618091850e6d",
+               "id": "15",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "TuCan",
+               "type": "url",
+               "url": "https://www.tucan.tu-darmstadt.de/scripts/mgrqispi.dll?APPNAME=CampusNet&PRGNAME=EXTERNALPAGES&ARGUMENTS=-N000000000000001,-N000344,-Awelcome"
+            },
+            {
+               "date_added": "13415721045000000",
+               "date_last_used": "0",
+               "guid": "d73f17c3-0018-4172-8a37-b6e6c95df380",
+               "id": "16",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Moodle Exam",
+               "type": "url",
+               "url": "https://moodle-exam.tu-darmstadt.de/my/"
+            },
+            {
+               "date_added": "13415915743000000",
+               "date_last_used": "0",
+               "guid": "ad536013-ecba-42b8-a454-93c84ac77ec7",
+               "id": "17",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Techniker Krankenkasse",
+               "type": "url",
+               "url": "https://www.tk.de/techniker"
+            },
+            {
+               "date_added": "13417003741000000",
+               "date_last_used": "0",
+               "guid": "cc8160c6-d484-4311-96e7-6227a4727cc6",
+               "id": "18",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Daily Duotrigordle",
+               "type": "url",
+               "url": "https://duotrigordle.com/game/daily/normal"
+            },
+            {
+               "date_added": "13417268888000000",
+               "date_last_used": "0",
+               "guid": "0568509c-ea68-4579-bd95-deee37dec98f",
+               "id": "19",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Daily Queens Game",
+               "type": "url",
+               "url": "https://queensultimate.com/"
+            }
+         ],
+         "date_added": "13423242391000000",
+         "date_last_used": "0",
+         "date_modified": "13423242392000000",
+         "guid": "b9ed1383-2ca9-4f89-bae6-0483fa8366aa",
+         "id": "1",
+         "name": "Bookmarks bar",
+         "type": "folder"
+      },
+      "other": {
+         "children": [],
+         "date_added": "13423242391000000",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "2ce505f1-4cbb-41a7-8900-393cdc869539",
+         "id": "2",
+         "name": "Other bookmarks",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [],
+         "date_added": "13423242391000000",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "bf45b98d-f202-4cee-b3c7-8f2acc58bb45",
+         "id": "3",
+         "name": "Mobile bookmarks",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}

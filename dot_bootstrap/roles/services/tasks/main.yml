@@ -1,4 +1,35 @@
 ---
+- name: Install Brave extension JSON files
+  ansible.builtin.copy:
+    content: |
+      {
+        "external_update_url": "https://clients2.google.com/service/update2/crx"
+      }
+    dest: "/usr/share/chromium/extensions/{{ item }}.json"
+    mode: '0644'
+  become: true
+  loop:
+    - oboonakemofpalcgghocfoadofidjkkk  # KeePassXC-Browser
+    - cimiefiiaegbelhefglklhhakcgmhkai  # Plasma Integration
+    - gebbhagfogifgggkldgodflihgfeippi  # Return YouTube Dislike
+    - mnjggcdmjocbbbhaepdhchncahnbgone  # SponsorBlock for YouTube
+    - dhdgffkkebhmkfjojejmpbldmpobfkfo  # Tampermonkey
+    - aejbmaihhlajphnlcdbojkjbdckkfdki  # Video Speed Control
+    - bkkmolkhemgaeaeggcmfbghljjjoofoh  # Catppuccin Mocha theme
+
+- name: Check if Brave Origin bookmarks already exist
+  ansible.builtin.stat:
+    path: "/home/{{ remote_regular_user }}/.config/BraveSoftware/Brave-Origin-Beta/Default/Bookmarks"
+  register: brave_bookmarks
+
+- name: Import bookmarks into Brave Nightly
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/files/bookmarks"
+    dest: "/home/{{ remote_regular_user }}/.config/BraveSoftware/Brave-Origin-Beta/Default/Bookmarks"
+    mode: '0600'
+  become: false
+  when: not brave_bookmarks.stat.exists
+
 - name: Enable and start syncthing
   ansible.builtin.systemd:
     name: "syncthing@{{ remote_regular_user }}"
@@ -24,11 +55,26 @@
   ansible.builtin.pause:
     prompt: "Complete Syncthing setup in the browser, then press enter to continue"
 
-- name: Connect to Tailscale
+- name: Check Tailscale status
   ansible.builtin.command:
+    cmd: tailscale status
+  become: false
+  register: tailscale_status
+  ignore_errors: true
+
+- name: Connect to Tailscale
+  ansible.builtin.shell:
     cmd: tailscale up
   become: true
+  register: tailscale_output
+  when: tailscale_status.rc != 0
+
+- name: Show Tailscale output
+  ansible.builtin.debug:
+    msg: "{{ tailscale_output.stdout }}"
+  when: tailscale_status.rc != 0
 
 - name: Wait for user to finish Tailscale setup
   ansible.builtin.pause:
     prompt: "Complete Tailscale authentication above, then press enter to continue"
+  when: tailscale_status.rc != 0
