@@ -13,12 +13,27 @@
     update_cache: true
   when: ansible_facts['os_family'] == "Archlinux"
 
+- name: Allow passwordless pacman for AUR builds
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/ansible-aur
+    line: "{{ remote_regular_user }} ALL=(ALL) NOPASSWD: /usr/bin/pacman"
+    create: true
+    validate: /usr/sbin/visudo -cf %s
+  become: true
+
 - name: Install AUR packages
   kewlfft.aur.aur:
     name: "{{ aur_packages }}"
     state: present
+    use: paru
   become: false
   when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Remove passwordless pacman rule
+  ansible.builtin.file:
+    path: /etc/sudoers.d/ansible-aur
+    state: absent
+  become: true
 
 - name: Install packages (Debian)
   ansible.builtin.apt:
@@ -45,4 +60,10 @@
     cmd: cargo install tectonic
     creates: "~/.cargo/bin/tectonic"
   when: ansible_facts['os_family'] == "Debian"
+  become: false
+
+- name: Set ssh config permissions
+  ansible.builtin.file:
+    path: "{{ ansible_facts['env']['HOME'] }}/.ssh/config"
+    mode: '0600'
   become: false

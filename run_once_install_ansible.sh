@@ -41,6 +41,6 @@ Darwin*)
 esac
 
 ansible-galaxy collection install -r ~/.bootstrap/requirements.yml
-ansible-playbook ~/.bootstrap/setup.yml --ask-become-pass
+cd ~/.bootstrap && ansible-playbook setup.yml --ask-become-pass
 
 echo "Ansible installation complete."

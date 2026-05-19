@@ -17,6 +17,8 @@ packages:
   - bat-extras
   - fzf
   - eza
+  - nvim
+  - paru
 
 aur_packages:
   - brave-origin-beta-bin
