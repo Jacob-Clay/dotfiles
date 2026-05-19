@@ -61,9 +61,3 @@
     creates: "~/.cargo/bin/tectonic"
   when: ansible_facts['os_family'] == "Debian"
   become: false
-
-- name: Set ssh config permissions
-  ansible.builtin.file:
-    path: "{{ ansible_facts['env']['HOME'] }}/.ssh/config"
-    mode: '0600'
-  become: false
