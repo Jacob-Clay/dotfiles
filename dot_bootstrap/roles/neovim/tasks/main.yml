@@ -14,7 +14,7 @@
     name: neovim
     extra_args: --user
   become: false
-  when: ansible_facts['os_family'] != "Archlinux" and ansible_facts['os_family] != "Darwin"
+  when: ansible_facts['os_family'] != "Archlinux" and ansible_facts['os_family'] != "Darwin"
 
 - name: Install treesitter parsers
   ansible.builtin.command:
