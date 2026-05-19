@@ -13,6 +13,13 @@
     update_cache: true
   when: ansible_facts['os_family'] == "Archlinux"
 
+- name: Install AUR packages
+  kewlfft.aur.aur:
+    name: "{{ aur_packages }}"
+    state: present
+  become: false
+  when: ansible_facts['os_family'] == "Archlinux"
+
 - name: Install packages (Debian)
   ansible.builtin.apt:
     name: "{{ packages }}"

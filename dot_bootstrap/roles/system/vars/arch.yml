@@ -1,11 +1,22 @@
 packages:
   - lazygit
+  - go
   - nodejs
   - npm
   - python-pip
   - python-pynvim
   - luarocks
-  - go
   - java-runtime
   - tectonic
+  - keepassxc
+  - syncthing
+  - tailscale
+  - zoxide
+  - kitty
+  - bat
+  - bat-extras
+  - fzf
+  - eza
 
+aur_packages:
+  - brave-origin-beta-bin
