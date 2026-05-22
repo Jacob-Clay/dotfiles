@@ -1,4 +1,11 @@
 ---
+- name: Ensure chromium extensions directory exists
+  ansible.builtin.file:
+    path: /usr/share/chromium/extensions
+    state: directory
+    mode: '0755'
+  become: true
+
 - name: Install Brave extension JSON files
   ansible.builtin.copy:
     content: |
@@ -24,7 +31,7 @@
 
 - name: Import bookmarks into Brave Nightly
   ansible.builtin.copy:
-    src: "{{ playbook_dir }}/files/bookmarks"
+    src: "{{ playbook_dir }}/files/Bookmarks"
     dest: "/home/{{ remote_regular_user }}/.config/BraveSoftware/Brave-Origin-Beta/Default/Bookmarks"
     mode: '0600'
   become: false
@@ -62,19 +69,8 @@
   register: tailscale_status
   ignore_errors: true
 
-- name: Connect to Tailscale
-  ansible.builtin.shell:
-    cmd: tailscale up
-  become: true
-  register: tailscale_output
-  when: tailscale_status.rc != 0
-
-- name: Show Tailscale output
-  ansible.builtin.debug:
-    msg: "{{ tailscale_output.stdout }}"
-  when: tailscale_status.rc != 0
-
-- name: Wait for user to finish Tailscale setup
+- name: Manual Tailscale login required
   ansible.builtin.pause:
-    prompt: "Complete Tailscale authentication above, then press enter to continue"
+    prompt: "Tailscale is not logged in. Please run 'sudo tailscale up' in another terminal,\n
+complete the login, then press enter to continue"
   when: tailscale_status.rc != 0
