@@ -180,6 +180,7 @@
                     "hidePassive": false,
                     "id": "Tray",
                     "pinned": [
+                        "proton.vpn.app.gtk"
                     ]
                 },
                 {
