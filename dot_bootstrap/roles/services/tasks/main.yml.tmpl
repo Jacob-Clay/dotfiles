@@ -1,3 +1,4 @@
+{{- /* chezmoi:template:left-delimiter=[[ right-delimiter=]] */ -}}
 ---
 - name: Ensure chromium extensions directory exists
   ansible.builtin.file:
@@ -74,3 +75,38 @@
     prompt: "Tailscale is not logged in. Please run 'sudo tailscale up' in another terminal,\n
 complete the login, then press enter to continue"
   when: tailscale_status.rc != 0
+
+[[ if .is_hp_envy ]]
+- name: Add hda-verb sudoers rule
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/hda-verb
+    line: "{{ remote_regular_user }} ALL=(ALL) NOPASSWD: /usr/bin/hda-verb *"
+    create: yes
+    mode: '0440'
+    validate: 'visudo -cf %s'
+
+- name: Enable linger for user
+  ansible.builtin.command:
+    cmd: loginctl enable-linger {{ remote_regular_user }}
+  changed_when: false
+
+- name: Get user info
+  ansible.builtin.getent:
+    database: passwd
+    key: "{{ remote_regular_user }}" 
+
+- name: Reload systemd user daemon and enable services
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+    scope: user
+    daemon_reload: yes
+  loop:
+    - audio-led.service
+    - mic-led.service
+  become: yes
+  become_user: "{{ remote_regular_user }}"
+  environment:
+    XDG_RUNTIME_DIR: "/run/user/{{ ansible_facts['getent_passwd'][remote_regular_user][2] }}"
+[[ end ]]
