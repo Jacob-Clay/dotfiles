@@ -1,0 +1,53 @@
+{{ if .is_hp_envy }}
+#!/bin/bash
+
+# mic-led - Microphone LED Controller for HP Envy with Realtek ALC245
+# This script monitors PipeWire mic mute state and controls the LED via HDA GPIO
+
+# HDA codec device
+CODEC_DEVICE="/dev/snd/hwC0D0"
+
+# Function to initialize GPIO
+init_gpio() {
+  sudo -n hda-verb "$CODEC_DEVICE" 0x01 SET_GPIO_MASK 0x16 >/dev/null 2>&1
+  sudo -n hda-verb "$CODEC_DEVICE" 0x01 SET_GPIO_DIR 0x16 >/dev/null 2>&1
+}
+
+# Function to turn LED on (muted state)
+led_on() {
+  sudo -n hda-verb "$CODEC_DEVICE" 0x01 SET_GPIO_DATA 0x00 >/dev/null 2>&1
+}
+
+# Function to turn LED off (unmuted state)
+led_off() {
+  sudo -n hda-verb "$CODEC_DEVICE" 0x01 SET_GPIO_DATA 0x04 >/dev/null 2>&1
+}
+
+# Function to update LED based on current mute status
+update_led() {
+  # Get current mute status from PipeWire
+  MUTE_STATUS=$(pactl get-source-mute @DEFAULT_SOURCE@ 2>/dev/null | awk '{print $2}')
+
+  if [ "$MUTE_STATUS" = "yes" ]; then
+    # Muted - turn LED on
+    led_on
+  else
+    # Unmuted - turn LED off
+    led_off
+  fi
+}
+
+# Initialize GPIO at startup
+init_gpio
+
+# Set initial LED state
+update_led
+
+# Monitor PipeWire events and update LED
+pactl subscribe | while read -r event; do
+  # Check if the event is related to source (microphone) changes
+  if echo "$event" | grep -q "'change' on source"; then
+    update_led
+  fi
+done
+{{ end }}
