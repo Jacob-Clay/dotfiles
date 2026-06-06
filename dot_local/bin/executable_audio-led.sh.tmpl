@@ -1,0 +1,54 @@
+{{ if .is_hp_envy }}
+#!/bin/bash
+
+# audio-led - Audio Mute LED Controller for HP Envy with Realtek ALC245
+# This script monitors PipeWire sink mute state and controls the LED via HDA GPIO
+
+# HDA codec device (verify with: grep "Speaker Playback Volume" /proc/asound/card*/codec*)
+CODEC_DEVICE="/dev/snd/hwC0D0"
+
+# Function to initialize GPIO
+init_gpio() {
+  sudo -n hda-verb "$CODEC_DEVICE" 0x20 0x500 0x0B >/dev/null 2>&1
+}
+
+# Function to turn LED on (muted state)
+led_on() {
+  sudo -n hda-verb "$CODEC_DEVICE" 0x20 0x500 0x0B >/dev/null 2>&1
+  sudo -n hda-verb "$CODEC_DEVICE" 0x20 0x400 0x7778 >/dev/null 2>&1
+}
+
+# Function to turn LED off (unmuted state)
+led_off() {
+  sudo -n hda-verb "$CODEC_DEVICE" 0x20 0x500 0x0B >/dev/null 2>&1
+  sudo -n hda-verb "$CODEC_DEVICE" 0x20 0x400 0x7774 >/dev/null 2>&1
+}
+
+# Function to update LED based on current mute status
+update_led() {
+  # Get current mute status from PipeWire default sink
+  MUTE_STATUS=$(pactl get-sink-mute @DEFAULT_SINK@ 2>/dev/null | awk '{print $2}')
+
+  if [ "$MUTE_STATUS" = "yes" ]; then
+    # Muted - turn LED on
+    led_on
+  else
+    # Unmuted - turn LED off
+    led_off
+  fi
+}
+
+# Initialize GPIO at startup
+init_gpio
+
+# Set initial LED state
+update_led
+
+# Monitor PipeWire events and update LED
+pactl subscribe | while read -r event; do
+  # Check if the event is related to sink (audio output) changes
+  if echo "$event" | grep -q "'change' on sink"; then
+    update_led
+  fi
+done
+{{ end }}

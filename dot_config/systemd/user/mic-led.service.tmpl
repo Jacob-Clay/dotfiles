@@ -1,0 +1,22 @@
+{{ if .is_hp_envy }}
+[Unit]
+Description=Microphone LED Controller (PipeWire version)
+After=pipewire.service pipewire-pulse.service wireplumber.service sound.target graphical-session.target
+Requires=pipewire-pulse.service
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/mic-led.sh
+Restart=on-failure
+RestartSec=5
+
+# Environment variables for PipeWire session
+Environment="PULSE_RUNTIME_PATH=/run/user/%U/pulse/"
+Environment="DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/%U/bus"
+
+# Delay to ensure audio stack is fully ready
+ExecStartPre=/bin/sleep 5
+
+[Install]
+WantedBy=default.target
+{{ end }}

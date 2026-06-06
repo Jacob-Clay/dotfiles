@@ -4,3 +4,5 @@
 [data]
   name = {{ $name | quote }}
   email = {{ $email | quote }}
+  {{ $productName := trim (output "cat" "/sys/class/dmi/id/product_name") }}
+  is_hp_envy = {{ contains "HP ENVY x360" $productName }}
