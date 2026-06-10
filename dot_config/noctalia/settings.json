@@ -642,9 +642,9 @@
     },
     "ui": {
         "boxBorderEnabled": false,
-        "fontDefault": "Noto Sans",
+        "fontDefault": "MesloLGS Nerd Font Propo",
         "fontDefaultScale": 1,
-        "fontFixed": "MesloLGL Nerd Font Mono",
+        "fontFixed": "MesloLGS Nerd Font Mono",
         "fontFixedScale": 1,
         "panelBackgroundOpacity": 0.93,
         "panelsAttachedToBar": true,
@@ -656,7 +656,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "/home/niri/Pictures/Wallpapers",
+        "directory": "/home/jacobc/Pictures/Wallpapers",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
