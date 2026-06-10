@@ -81,7 +81,7 @@
                 {
                     "characterCount": 2,
                     "colorizeIcons": false,
-                    "emptyColor": "secondary",
+                    "emptyColor": "none",
                     "enableScrollWheel": true,
                     "focusedColor": "primary",
                     "followFocusedScreen": false,
@@ -112,15 +112,6 @@
                     "useDistroLogo": false
                 },
                 {
-                    "clockColor": "none",
-                    "customFont": "",
-                    "formatHorizontal": "HH:mm ddd, MMM dd",
-                    "formatVertical": "HH mm - dd MM",
-                    "id": "Clock",
-                    "tooltipFormat": "HH:mm ddd, MMM dd",
-                    "useCustomFont": false
-                },
-                {
                     "compactMode": true,
                     "diskPath": "/",
                     "iconColor": "none",
@@ -146,7 +137,7 @@
                     "colorizeIcons": false,
                     "hideMode": "hidden",
                     "id": "ActiveWindow",
-                    "maxWidth": 145,
+                    "maxWidth": 200,
                     "scrollingMode": "hover",
                     "showIcon": true,
                     "showText": true,
@@ -238,6 +229,15 @@
                         "windowWidth": 1400
                     },
                     "id": "plugin:keybind-cheatsheet"
+                },
+                {
+                    "clockColor": "none",
+                    "customFont": "",
+                    "formatHorizontal": "HH:mm ddd, MMM dd",
+                    "formatVertical": "HH mm - dd MM",
+                    "id": "Clock",
+                    "tooltipFormat": "HH:mm ddd, MMM dd",
+                    "useCustomFont": false
                 }
             ]
         }
