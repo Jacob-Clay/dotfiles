@@ -31,6 +31,8 @@ source $ZSH/oh-my-zsh.sh
 export HISTCONTROL=ignoreboth
 export HISTORY_IGNORE="(\&|[bf]g|c|clear|history|exit|q|pwd|* --help)"
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+alias h="history"
+alais hg="history | grep "
 
 # Man page colors
 alias man="batman"
