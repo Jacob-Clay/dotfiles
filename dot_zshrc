@@ -32,7 +32,7 @@ export HISTCONTROL=ignoreboth
 export HISTORY_IGNORE="(\&|[bf]g|c|clear|history|exit|q|pwd|* --help)"
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 alias h="history"
-alais hg="history | grep "
+alias hg="history | grep "
 
 # Man page colors
 alias man="batman"
@@ -61,6 +61,7 @@ alias ll="eza -lh --icons --git"
 alias la="eza -lah --icons --git"
 
 export FZF_BASE=/usr/share/fzf
+export PATH=$PATH:/home/jacobc/.spicetify
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
