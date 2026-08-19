@@ -56,7 +56,7 @@ alias ga="git add ."
 alias gc="git commit -m"
 
 # ls replacement Aliases
-alias ls="eza --icons"
+alias ls="eza --icons always"
 alias ll="eza -lh --icons --git"
 alias la="eza -lah --icons --git"
 
