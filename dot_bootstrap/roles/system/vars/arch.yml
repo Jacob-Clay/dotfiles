@@ -26,3 +26,4 @@ packages:
 
 aur_packages:
   - brave-origin-beta-bin
+  - ttf-juliamono
