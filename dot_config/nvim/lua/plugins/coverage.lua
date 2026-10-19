@@ -8,7 +8,7 @@ return {
       "<leader>tC",
       function()
         vim.notify("Running tests with coverage…")
-        vim.system({ "uv", "run", "python", "-m", "pytest", "--cov=sudoku", "-q" }, { text = true }, function(result)
+        vim.system({ "uv", "run", "python", "-m", "pytest", "--cov", "-q" }, { text = true }, function(result)
           vim.schedule(function()
             if result.code == 0 then
               vim.notify("Tests passed")
