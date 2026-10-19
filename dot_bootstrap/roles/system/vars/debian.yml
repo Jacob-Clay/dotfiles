@@ -6,3 +6,8 @@ packages:
   - luarocks
   - golang
   - default-jre
+  - texlive-latex-base
+  - texlive-latex-recommended
+  - texlive-latex-extra
+  - ghostscript
+  - imagemagick

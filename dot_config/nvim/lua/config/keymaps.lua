@@ -4,3 +4,6 @@
 
 vim.keymap.set("n", "<C-z>", "u", { desc = "Undo" })
 vim.keymap.set("i", "<C-z>", "<C-o>u", { desc = "Undo" })
+vim.keymap.set("n", "<leader>t.", function()
+  Snacks.scratch({ ft = "markdown", name = "Todo" })
+end, { desc = "Todo Scratch" })

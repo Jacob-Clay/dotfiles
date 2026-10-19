@@ -7,7 +7,11 @@ packages:
   - python-pynvim
   - luarocks
   - java-runtime
-  - tectonic
+  - texlive-basic
+  - texlive-latexextra
+  - ghostscript
+  - imagemagick
+  - tree-sitter-cli
   - keepassxc
   - syncthing
   - tailscale
@@ -17,7 +21,7 @@ packages:
   - bat-extras
   - fzf
   - eza
-  - nvim
+  - neovim
   - paru
 
 aur_packages:
