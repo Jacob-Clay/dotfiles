@@ -12,8 +12,6 @@ binds {
     // The v4 keybind-cheatsheet plugin does not carry over — v5 has its own
     // plugin system with a different API. Check the plugin catalogue for a
     // replacement before re-enabling this:
-    //   noctalia msg plugins
-    // Mod+Shift+ESCAPE { spawn-sh "noctalia msg plugin <id> toggle"; }
 
     // #"Applications"
     Mod+Return hotkey-overlay-title="Open Terminal: Kitty" { spawn "kitty"; }
@@ -22,6 +20,16 @@ binds {
     Mod+ALT+L hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "noctalia msg screen-lock"; }
     Mod+Shift+Q hotkey-overlay-title="Session Menu: noctalia session" { spawn-sh "noctalia msg panel-toggle session"; }
     Mod+E hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
+    Mod+G hotkey-overlay-title="Open Steam" { spawn "steam"; }
+
+    // #"Noctalia Plugins"
+    Mod+Y hotkey-overlay-title="Keybind-Cheatsheet: open panel" { spawn "noctalia" "msg" "panel-toggle" "kenn/keybind-cheatsheet:cheatsheet"; }
+    Mod+Shift+Y hotkey-overlay-title="Keybind-Cheatsheet: refresh" { spawn "noctalia" "msg" "plugin" "kenn/keybind-cheatsheet:data" "all" "refresh"; }
+    Mod+U hotkey-overlay-title="Syncthing: open panel" { spawn "noctalia" "msg" "panel-toggle" "rylos/syncthing:panel"; }
+    Mod+Shift+U hotkey-overlay-title="Syncthing: refresh" { spawn "noctalia" "msg" "plugin" "rylos/syncthing:poller" "all" "refresh"; }
+    Mod+CTRL+U hotkey-overlay-title="Syncthing: open GUI" { spawn "noctalia" "msg" "plugin" "rylos/syncthing:poller" "all" "open"; }
+    Mod+I hotkey-overlay-title="Tailnet: open panel" { spawn "noctalia" "msg" "panel-toggle" "rylos/tailnet:panel"; }
+    Mod+Shift+I hotkey-overlay-title="Tailnet: refresh" { spawn "noctalia" "msg" "plugin" "rylos/tailnet:poller" "all" "refresh"; }
 
     // #"Noctalia surfaces" — new in v5, no v4 equivalent in your old config.
     // These keys were unbound in your setup; drop any you don't want.
@@ -50,6 +58,8 @@ binds {
 
     // #"Window Movement and Focus"
     Mod+Q { close-window; }
+    ALT+TAB repeat=false { toggle-overview; }
+    Mod+O repeat=false { toggle-overview; }
 
     Mod+Left { focus-column-left; }
     Mod+H { focus-column-left; }
@@ -153,5 +163,4 @@ binds {
     // Also quits Niri
     Mod+Shift+P { power-off-monitors; }
     // Turn off screens (useful for OLED or privacy)
-    Mod+O repeat=false { toggle-overview; }
 }

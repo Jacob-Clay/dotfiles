@@ -1,7 +1,6 @@
 packages:
   - lazygit
   - go
-  - nodejs
   - npm
   - python-pip
   - python-pynvim
