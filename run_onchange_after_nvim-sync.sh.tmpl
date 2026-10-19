@@ -1,0 +1,18 @@
+#!/bin/sh
+# Re-run whenever any of these change:
+# lazy-lock:   {{ include "nvim-state/lazy-lock.json" | sha256sum }}
+# lazyvim:     {{ include "nvim-state/lazyvim.json" | sha256sum }}
+# colorscheme: {{ include "dot_config/nvim/lua/plugins/colorscheme.lua" | sha256sum }}
+
+set -e
+
+if ! command -v nvim >/dev/null 2>&1; then
+  echo "nvim not installed, skipping plugin sync"
+  exit 0
+fi
+
+echo "Restoring Neovim plugins from lazy-lock.json..."
+nvim --headless "+Lazy! restore" +qa
+
+echo "Recompiling catppuccin..."
+nvim --headless "+CatppuccinCompile" +qa
