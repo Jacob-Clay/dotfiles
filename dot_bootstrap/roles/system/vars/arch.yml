@@ -9,6 +9,7 @@ packages:
   - java-runtime
   - texlive-basic
   - texlive-latexextra
+  - python-pylatexenc
   - ghostscript
   - imagemagick
   - tree-sitter-cli
