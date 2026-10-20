@@ -5,13 +5,6 @@ binds {
 
     // ─── Noctalia v5 keybinds ───
     // https://docs.noctalia.dev/noctalia/ipc/
-    // v5 uses:  noctalia msg <command> [args]
-    // v4 used:  qs -c noctalia-shell ipc call <object> <method>
-    // Both spawn and spawn-sh work; spawn-sh is kept here to match the old file.
-
-    // The v4 keybind-cheatsheet plugin does not carry over — v5 has its own
-    // plugin system with a different API. Check the plugin catalogue for a
-    // replacement before re-enabling this:
 
     // #"Applications"
     Mod+Return hotkey-overlay-title="Open Terminal: Kitty" { spawn "kitty"; }

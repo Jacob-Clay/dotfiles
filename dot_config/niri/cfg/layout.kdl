@@ -3,10 +3,6 @@ layout {
   center-focused-column "never" // Don’t auto-center focused column
   background-color "transparent" // <- needed for noctalia-shell to set wallpaper
 
-  focus-ring {
-    
-  }
-
   preset-column-widths {
     proportion 0.33333
     proportion 0.5
@@ -14,5 +10,4 @@ layout {
     proportion 1.0
   }
 
-  struts {}
 }

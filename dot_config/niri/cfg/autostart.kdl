@@ -1,8 +1,6 @@
 // ────────────── Startup Applications ──────────────
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-sh-at-startup
 
-// old v4 version
-// spawn-sh-at-startup "qs -c noctalia-shell" 
 
 spawn-at-startup "noctalia"
 spawn-at-startup "nm-applet"
