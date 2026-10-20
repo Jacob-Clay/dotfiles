@@ -26,7 +26,7 @@ mode = "dark"
 wallpaper_scheme = "m3-content"
 
 [theme.templates]
-builtin_ids = ["gtk3", "gtk4", "kitty", "niri", "qt"]
+builtin_ids = ["gtk3", "gtk4", "niri", "qt"]
 community_ids = ["libreoffice", "steam", "fastfetch"]
 
 [wallpaper.default]
