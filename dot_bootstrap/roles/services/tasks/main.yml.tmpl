@@ -52,16 +52,34 @@
     state: started
   become: true
 
+- name: Check whether Syncthing is paired with any other device
+  ansible.builtin.command:
+    cmd: syncthing cli config devices list
+  become: false
+  register: syncthing_devices
+  changed_when: false
+  failed_when: false
+
+- name: Decide whether Syncthing still needs setup
+  ansible.builtin.set_fact:
+    syncthing_needs_setup: "{{ syncthing_devices.rc != 0 or (syncthing_devices.stdout_lines | length) < 2 }}"
+
+- name: Wait for the Syncthing web UI
+  ansible.builtin.wait_for:
+    port: 8384
+    timeout: 60
+  when: syncthing_needs_setup
+
 - name: Open Syncthing UI in Brave
   ansible.builtin.command:
     cmd: brave-origin-beta http://localhost:8384
   become: false
-  async: 0
-  poll: 0
+  when: syncthing_needs_setup
 
 - name: Wait for user to finish Syncthing setup
   ansible.builtin.pause:
     prompt: "Complete Syncthing setup in the browser, then press enter to continue"
+  when: syncthing_needs_setup
 
 - name: Check Tailscale status
   ansible.builtin.command:
@@ -77,6 +95,12 @@ complete the login, then press enter to continue"
   when: tailscale_status.rc != 0
 
 [[ if .is_hp_envy ]]
+- name: install needed dependency for hda-verb
+  community.general.pacman:
+    name: "alsa-tools"
+    state: present
+  when: ansible_facts['os_family'] == "Archlinux"
+
 - name: Add hda-verb sudoers rule
   ansible.builtin.lineinfile:
     path: /etc/sudoers.d/hda-verb

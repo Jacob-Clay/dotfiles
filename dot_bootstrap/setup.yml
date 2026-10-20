@@ -5,9 +5,15 @@
   connection: local
   gather_facts: true
   vars:
-    remote_regular_user: "{{ ansible_facts['env']['SUDO_USER'] or default(ansible_facts['user_id']) }}"
+    remote_regular_user: "{{ ansible_facts['env']['SUDO_USER'] | default(ansible_facts['user_id']) }}"
+    supported_os_families: ["Archlinux"]
   roles:
     - system
     - neovim
     - shell
     - services
+  pre_tasks:
+    - name: Check that this OS is supported
+      ansible.builtin.assert:
+        that: ansible_facts['os_family'] in supported_os_families
+        fail_msg: "{{ ansible_facts['os_family'] }} is not supported yet; add it to supported_os_families and give it a vars file."

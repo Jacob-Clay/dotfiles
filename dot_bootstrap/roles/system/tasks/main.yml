@@ -61,11 +61,3 @@
     name: "{{ packages }}"
     state: present
   when: ansible_facts['os_family'] == "Darwin"
-
-# tectonic fallback for distros where it's not in repos
-- name: Install tectonic via cargo (Debian fallback)
-  ansible.builtin.command:
-    cmd: cargo install tectonic
-    creates: "~/.cargo/bin/tectonic"
-  when: ansible_facts['os_family'] == "Debian"
-  become: false

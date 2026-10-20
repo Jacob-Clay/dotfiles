@@ -21,8 +21,12 @@ OS="$(uname -s)"
 case "${OS}" in
 Linux*)
   if [ -f /etc/fedora-release ]; then
+    echo "Unsupported Linux distribution"
+    exit 1
     install_on_fedora
   elif [ -f /etc/lsb-release ]; then
+    echo "Unsupported Linux distribution"
+    exit 1
     install_on_ubuntu
   elif [ -f /etc/pacman.conf ]; then
     install_on_pacman
@@ -32,6 +36,8 @@ Linux*)
   fi
   ;;
 Darwin*)
+  echo "Unsupported operating system: ${OS}"
+  exit 1
   install_on_mac
   ;;
 *)
