@@ -25,19 +25,6 @@
     - aejbmaihhlajphnlcdbojkjbdckkfdki  # Video Speed Control
     - bkkmolkhemgaeaeggcmfbghljjjoofoh  # Catppuccin Mocha theme
 
-- name: Check if Brave Origin bookmarks already exist
-  ansible.builtin.stat:
-    path: "/home/{{ remote_regular_user }}/.config/BraveSoftware/Brave-Origin-Beta/Default/Bookmarks"
-  register: brave_bookmarks
-
-- name: Import bookmarks into Brave Nightly
-  ansible.builtin.copy:
-    src: "{{ playbook_dir }}/files/Bookmarks"
-    dest: "/home/{{ remote_regular_user }}/.config/BraveSoftware/Brave-Origin-Beta/Default/Bookmarks"
-    mode: '0600'
-  become: false
-  when: not brave_bookmarks.stat.exists
-
 - name: Enable and start syncthing
   ansible.builtin.systemd:
     name: "syncthing@{{ remote_regular_user }}"
