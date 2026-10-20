@@ -28,9 +28,8 @@ eval "$(zoxide init zsh)"
 source $ZSH/oh-my-zsh.sh
 
 # History
-export HISTCONTROL=ignoreboth
 export HISTORY_IGNORE="(\&|[bf]g|c|clear|history|exit|q|pwd|* --help)"
-export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+setopt HIST_IGNORE_SPACE HIST_IGNORE_ALL_DUPS INC_APPEND_HISTORY
 alias h="history"
 alias hg="history | grep "
 
@@ -47,7 +46,7 @@ alias rmpkg="sudo pacman -Rsn"
 alias cleanch="sudo pacman -Scc"
 alias fixpacman="sudo rm /var/lib/pacman/db.lck"
 alias update="sudo pacman -Syu"
-alias cleanup="sudo pacman -Rsn $(pacman -Qtdq)"
+alias cleanup='sudo pacman -Rsn $(pacman -Qtdq)'
 alias jctl="journalctl -p 3 -xb"
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 
@@ -62,10 +61,11 @@ alias la="eza -lah --icons --git"
 
 export FZF_BASE=/usr/share/fzf
 eval "$(register-python-argcomplete pipx)"
-export PATH=$PATH:/home/jacobc/.spicetify
+export PATH=$PATH:$HOME/.spicetify
+export EDITOR=nvim
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Created by `pipx` on 2026-08-04 12:33:24
-export PATH="$PATH:/home/jacobc/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
