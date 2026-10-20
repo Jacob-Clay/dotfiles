@@ -1,0 +1,33 @@
+[bar.default]
+margin_ends = 0
+position = "bottom"
+
+[calendar]
+enabled = true
+
+[calendar.account.personal_google]
+type = "google"
+
+[location]
+auto_locate = true
+
+[plugins]
+enabled = ["rylos/syncthing", "rylos/tailnet", "kenn/keybind-cheatsheet"]
+
+[shell]
+font_family = "MesloLGS Nerd Font"
+polkit_agent = true
+
+[theme]
+# Catppuccin Mocha, matching nvim (catppuccin flavour = "mocha")
+source = "builtin"
+builtin = "Catppuccin"
+mode = "dark"
+wallpaper_scheme = "m3-content"
+
+[theme.templates]
+builtin_ids = ["gtk3", "gtk4", "kitty", "niri", "qt"]
+community_ids = ["libreoffice", "steam", "fastfetch"]
+
+[wallpaper.default]
+path = "/usr/share/noctalia/assets/noctalia-wallpaper.png"
