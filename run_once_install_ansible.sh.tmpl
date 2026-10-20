@@ -20,25 +20,34 @@ install_on_mac() {
 OS="$(uname -s)"
 case "${OS}" in
 Linux*)
-  if [ -f /etc/fedora-release ]; then
-    echo "Unsupported Linux distribution"
-    exit 1
-    install_on_fedora
-  elif [ -f /etc/lsb-release ]; then
-    echo "Unsupported Linux distribution"
-    exit 1
-    install_on_ubuntu
-  elif [ -f /etc/pacman.conf ]; then
+  # shellcheck source=/dev/null
+  . /etc/os-release
+  # Match on the distro itself and what it is based on, e.g.
+  # CachyOS: ID=cachyos ID_LIKE=arch; Ubuntu: ID=Ubuntu ID_LIKE=debian
+  case " ${ID} ${ID_LIKE:-} " in
+  *" arch "*)
     install_on_pacman
-  else
-    echo "Unsupported Linux distribution"
+    ;;
+  *" fedora "*)
+    echo "Unsupported Linux distribution ${ID}"
     exit 1
-  fi
+    # to re-enable: install_on_fedora
+    ;;
+  *" debian "* | *" ubuntu "*)
+    echo "Unsupported Linux distribution ${ID}"
+    exit 1
+    # to re-enable: install_on_ubuntu
+    ;;
+  *)
+    echo "Unsupported Linux distribution ${ID}"
+    exit 1
+    ;;
+  esac
   ;;
 Darwin*)
   echo "Unsupported operating system: ${OS}"
   exit 1
-  install_on_mac
+  # to re-enable install_on_mac
   ;;
 *)
   echo "Unsupported operating system: ${OS}"
