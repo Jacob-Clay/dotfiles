@@ -1,5 +1,5 @@
 # How to setup
 
 ```bash
-chezmoi init Jacob-Clay
+chezmoi init --apply Jacob-Clay
 ```

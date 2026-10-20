@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 install_on_fedora() {
   sudo dnf install -y ansible
@@ -23,7 +24,7 @@ Linux*)
   # shellcheck source=/dev/null
   . /etc/os-release
   # Match on the distro itself and what it is based on, e.g.
-  # CachyOS: ID=cachyos ID_LIKE=arch; Ubuntu: ID=Ubuntu ID_LIKE=debian
+  # CachyOS: ID=cachyos ID_LIKE=arch; Ubuntu: ID=ubuntu ID_LIKE=debian
   case " ${ID} ${ID_LIKE:-} " in
   *" arch "*)
     install_on_pacman

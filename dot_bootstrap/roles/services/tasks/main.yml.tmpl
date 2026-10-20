@@ -17,13 +17,15 @@
     mode: '0644'
   become: true
   loop:
-    - oboonakemofpalcgghocfoadofidjkkk  # KeePassXC-Browser
-    - cimiefiiaegbelhefglklhhakcgmhkai  # Plasma Integration
     - gebbhagfogifgggkldgodflihgfeippi  # Return YouTube Dislike
     - mnjggcdmjocbbbhaepdhchncahnbgone  # SponsorBlock for YouTube
     - dhdgffkkebhmkfjojejmpbldmpobfkfo  # Tampermonkey
     - aejbmaihhlajphnlcdbojkjbdckkfdki  # Video Speed Control
     - bkkmolkhemgaeaeggcmfbghljjjoofoh  # Catppuccin Mocha theme
+    - oboonakemofpalcgghocfoadofidjkkk  # KeePassXC-Browser
+[[ if eq .desktop "kde" ]]
+    - cimiefiiaegbelhefglklhhakcgmhkai  # Plasma Integration
+[[ end ]]
 
 - name: Enable and start syncthing
   ansible.builtin.systemd:
