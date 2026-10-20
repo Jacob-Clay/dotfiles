@@ -2,7 +2,6 @@
 # Re-run whenever any of these change:
 # lazy-lock:   {{ include "nvim-state/lazy-lock.json" | sha256sum }}
 # lazyvim:     {{ include "nvim-state/lazyvim.json" | sha256sum }}
-# colorscheme: {{ include "dot_config/nvim/lua/plugins/colorscheme.lua" | sha256sum }}
 
 set -e
 
@@ -13,6 +12,3 @@ fi
 
 echo "Restoring Neovim plugins from lazy-lock.json..."
 nvim --headless "+Lazy! restore" +qa
-
-echo "Recompiling catppuccin..."
-nvim --headless "+CatppuccinCompile" +qa
