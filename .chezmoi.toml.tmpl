@@ -1,8 +1,10 @@
 {{- $name := promptStringOnce . "name" "Full name" -}}
 {{- $email := promptStringOnce . "email" "Git email" -}}
+{{- $desktop := promptStringOnce . "desktop" "Desktop" (list "niri" "kde") -}}
 
 [data]
   name = {{ $name | quote }}
   email = {{ $email | quote }}
+  desktop = {{ $desktop | quote }}
   {{ $productName := trim (output "cat" "/sys/class/dmi/id/product_name") }}
   is_hp_envy = {{ contains "HP ENVY x360" $productName }}

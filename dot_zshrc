@@ -16,13 +16,13 @@ fzf
 sudo
 extract
 copyfile
-you-should-use
 )
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /usr/share/doc/pkgfile/command-not-found.zsh
+source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
 eval "$(zoxide init zsh)"
 
 source $ZSH/oh-my-zsh.sh

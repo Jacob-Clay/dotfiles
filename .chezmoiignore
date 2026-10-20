@@ -1,3 +1,8 @@
 README.md
 .gitignore
 nvim-state/
+
+{{ if ne .desktop "niri" }}
+.config/niri/
+.config/noctalia/
+{{ end }}

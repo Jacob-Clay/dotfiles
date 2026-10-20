@@ -23,7 +23,37 @@ packages:
   - eza
   - neovim
   - paru
+  # Fonts used by kitty and noctalia
+  - ttf-meslo-nerd
+
+  # Neovim / LazyVim
+  - ripgrep
+  - fd
+  - base-devel
+  - unzip
+  - wl-clipboard
+  - uv
+
+  # Shell (.zshrc)
+  - oh-my-zsh-git
+  - zsh-theme-powerlevel10k
+  - zsh-syntax-highlighting
+  - zsh-autosuggestions
+  - zsh-history-substring-search
+  - pkgfile
+  - python-pipx
+  - python-argcomplete
+  - expac
 
 aur_packages:
   - brave-origin-beta-bin
   - ttf-juliamono
+  - zsh-you-should-use
+
+niri_packages:
+  - niri
+  - noctalia
+  - nautilus
+  - network-manager-applet
+  - capitaine-cursors
+  - qt5ct
