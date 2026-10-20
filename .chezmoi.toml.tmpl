@@ -1,6 +1,6 @@
 {{- $name := promptStringOnce . "name" "Full name" -}}
 {{- $email := promptStringOnce . "email" "Git email" -}}
-{{- $desktop := promptStringOnce . "desktop" "Desktop" (list "niri" "kde") -}}
+{{- $desktop := promptChoiceOnce . "desktop" "Desktop" (list "niri" "kde") -}}
 
 [data]
   name = {{ $name | quote }}
