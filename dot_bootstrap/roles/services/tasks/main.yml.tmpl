@@ -97,6 +97,16 @@
     - (current_dm.stdout | basename) != "greetd.service"
   become: true
 
+- name: Unlock GNOME Keyring at greeter login (PAM)
+  ansible.builtin.lineinfile:
+    path: /etc/pam.d/greetd
+    line: "{{ item.line }}"
+    insertafter: "{{ item.after }}"
+  loop:
+    - { line: "auth       optional     pam_gnome_keyring.so", after: '^auth' }
+    - { line: "session    optional     pam_gnome_keyring.so auto_start", after: '^session' }
+  become: true
+
 # Enabled only, not started: starting it now would grab the VT from a running
 # session. It takes over on the next boot.
 - name: Enable greetd
