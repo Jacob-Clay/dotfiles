@@ -53,6 +53,9 @@ aur_packages:
 niri_packages:
   - niri
   - noctalia
+  - greetd
+  - noctalia-greeter
+  - accountsservice
   - nautilus
   - network-manager-applet
   - capitaine-cursors

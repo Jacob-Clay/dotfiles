@@ -41,6 +41,72 @@
     state: started
   become: true
 
+[[ if eq .desktop "niri" ]]
+# ------------ Noctalia Greeter (greetd) --------------------
+# https://docs.noctalia.dev/greeter/installation/
+- name: Point greetd at the Noctalia greeter
+  community.general.ini_file:
+    path: /etc/greetd/config.toml
+    section: default_session
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+    mode: '0644'
+  loop:
+    - { option: command, value: '"/usr/bin/noctalia-greeter-session"' }
+    - { option: user, value: '"greeter"'}
+  become: true
+
+- name: Create Noctalia greeter state directory
+  ansible.builtin.command:
+    cmd: systemd-tmpfiles --create noctalia-greeter.conf
+    creates: /var/lib/noctalia-greeter
+  become: true
+
+- name: Initialise Noctalia greeter config (greeter.toml / sync.toml)
+  ansible.builtin.command:
+    cmd: noctalia-greeter-apply-appearance --setup-system
+    creates: /var/lib/noctalia-greeter/greeter.toml
+  become: true
+
+- name: Allow syncing shell appearance to the greeter with a password prompt
+  ansible.builtin.command:
+    cmd: "noctalia-greeter passwordless-sync enable {{ remote_regular_user }}"
+  register: greeter_passwordless
+  changed_when: "'already enabled' not in greeter_passwordless.stdout"
+  become: true
+
+- name: Enable AccountsService (login screen avatars)
+  ansible.builtin.systemd:
+    name: accounts-daemon
+    enabled: true
+  become: true
+
+- name: Find the currently enabled display manager
+  ansible.builtin.command:
+    cmd: readlink -f /etc/systemd/system/display-manager.service
+  register: current_dm
+  changed_when: false
+  failed_when: false
+
+- name: Disable any other display manager
+  ansible.builtin.systemd:
+    name: "{{ current_dm.stdout | basename }}"
+    enabled: false
+  when:
+    - current_dm.rc == 0
+    - (current_dm.stdout | basename) != "greetd.service"
+  become: true
+
+# Enabled only, not started: starting it now would grab the VT from a running
+# session. It takes over on the next boot.
+- name: Enable greetd
+  ansible.builtin.systemd:
+    name: greetd
+    enabled: true
+  become: true
+[[ end ]]
+
+
 - name: Check whether Syncthing is paired with any other device
   ansible.builtin.command:
     cmd: syncthing cli config devices list
