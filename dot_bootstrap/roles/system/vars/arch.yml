@@ -5,7 +5,7 @@ packages:
   - python-pip
   - python-pynvim
   - luarocks
-  - java-runtime
+  - jdk-openjdk
   - texlive-basic
   - texlive-latexextra
   - python-pylatexenc
