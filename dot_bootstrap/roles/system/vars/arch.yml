@@ -55,7 +55,7 @@ niri_packages:
   - noctalia
   - greetd
   - noctalia-greeter
-  - accountsservice
+  - accountsservice # user avatars on the login screen
   - nautilus
   - network-manager-applet
   - capitaine-cursors

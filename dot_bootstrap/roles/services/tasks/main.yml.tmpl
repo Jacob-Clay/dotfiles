@@ -53,7 +53,7 @@
     mode: '0644'
   loop:
     - { option: command, value: '"/usr/bin/noctalia-greeter-session"' }
-    - { option: user, value: '"greeter"'}
+    - { option: user, value: '"greeter"' }
   become: true
 
 - name: Create Noctalia greeter state directory
@@ -68,7 +68,7 @@
     creates: /var/lib/noctalia-greeter/greeter.toml
   become: true
 
-- name: Allow syncing shell appearance to the greeter with a password prompt
+- name: Allow syncing shell appearance to the greeter without a password prompt
   ansible.builtin.command:
     cmd: "noctalia-greeter passwordless-sync enable {{ remote_regular_user }}"
   register: greeter_passwordless

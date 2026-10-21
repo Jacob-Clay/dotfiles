@@ -20,7 +20,7 @@ polkit_agent = true
 
 [shell.greeter_sync]
 # Push wallpaper, palette, theme mode and font to the login screen whenever they change
-# auto_sync = true
+auto_sync = true
 
 [theme]
 # Catppuccin Mocha, matching nvim (catppuccin flavour = "mocha")
