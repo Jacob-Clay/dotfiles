@@ -2,13 +2,29 @@
 # Re-run whenever any of these change:
 # lazy-lock:   {{ include "nvim-state/lazy-lock.json" | sha256sum }}
 # lazyvim:     {{ include "nvim-state/lazyvim.json" | sha256sum }}
+#
+# nvim-state/lazy-lock.json is a known-good plugin snapshot. Each machine keeps
+# its own local lock that lazy may update freely; whenever the snapshot changes,
+# the local lock is reset to it. Save a new snapshot with `nvim-lock-save`.
 
 set -e
+
+lock="$HOME/.config/nvim/lazy-lock.json"
+snapshot="{{ .chezmoi.sourceDir }}/nvim-state/lazy-lock.json"
+
+# The lock used to be a symlink into this repo. Remove it rather than copying
+# through it, which would write straight back into the repo.
+if [ -L "$lock" ]; then
+  rm -f "$lock"
+fi
+
+mkdir -p "$(dirname "$lock")"
+cp "$snapshot" "$lock"
 
 if ! command -v nvim >/dev/null 2>&1; then
   echo "nvim not installed, skipping plugin sync"
   exit 0
 fi
 
-echo "Restoring Neovim plugins from lazy-lock.json..."
+echo "Restoring Neovim plugins from lazy-lock.json snapshot..."
 nvim --headless "+Lazy! restore" +qa

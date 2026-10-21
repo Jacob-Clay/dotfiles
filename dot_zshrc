@@ -54,6 +54,17 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 alias ga="git add ."
 alias gc="git commit -m"
 
+# Save this machine's Neovim plugin versions as the shared snapshot in chezmoi
+nvim-lock-save() {
+    cp ~/.config/nvim/lazy-lock.json "$(chezmoi source-path)/nvim-state/lazy-lock.json" || return
+    if chezmoi git -- diff --quiet -- nvim-state/lazy-lock.json; then
+      echo "snapshot already matches this machine."
+      return
+    fi
+    chezmoi git -- commit -m "nvim: bump plugin snapshot" -- nvim-state/lazy-lock.json &&
+      chezmoi git -- push
+  }
+
 # ls replacement Aliases
 alias ls="eza --icons always"
 alias ll="eza -lh --icons --git"
