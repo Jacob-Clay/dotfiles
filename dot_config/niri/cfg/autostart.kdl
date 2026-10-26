@@ -4,3 +4,4 @@
 
 spawn-at-startup "noctalia"
 spawn-at-startup "nm-applet"
+spawn-at-startup "kanshi"

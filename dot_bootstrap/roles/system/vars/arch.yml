@@ -53,6 +53,7 @@ aur_packages:
 niri_packages:
   - niri
   - noctalia
+  - kanshi
   - greetd
   - noctalia-greeter
   - accountsservice # user avatars on the login screen

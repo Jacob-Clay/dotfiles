@@ -4,4 +4,5 @@ nvim-state/
 {{ if ne .desktop "niri" }}
 .config/niri/
 .config/noctalia/
+.config/kanshi/
 {{ end }}
