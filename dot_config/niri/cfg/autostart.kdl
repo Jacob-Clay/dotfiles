@@ -4,3 +4,4 @@
 
 spawn-at-startup "noctalia"
 spawn-at-startup "kanshi"
+spawn-sh-at-startup "~/.cargo/bin/niri-adv-rules"

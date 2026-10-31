@@ -1,0 +1,22 @@
+[
+  {
+    "Window": {
+      "conditions": [
+        {
+          "IsFloating": true
+        },
+        {
+          "AppID": {
+            "id": "org.keepassxc.KeePassXC",
+            "invert": false
+          }
+        }
+      ],
+      "actions": [
+        {
+          "MoveToWorkspace": null
+        }
+      ]
+    }
+  }
+]
