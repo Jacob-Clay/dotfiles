@@ -1,6 +1,7 @@
 {{- $name := promptStringOnce . "name" "Full name" -}}
 {{- $email := promptStringOnce . "email" "Git email" -}}
 {{- $desktop := promptChoiceOnce . "desktop" "Desktop" (list "niri" "kde") -}}
+{{- $fingerprint := promptBoolOnce . "has_fingerprint" "Fingerprint reader" -}}
 
 [data]
   name = {{ $name | quote }}
@@ -8,3 +9,4 @@
   desktop = {{ $desktop | quote }}
   {{ $productName := trim (output "cat" "/sys/class/dmi/id/product_name") }}
   is_hp_envy = {{ contains "HP ENVY x360" $productName }}
+  has_fingerprint = {{ $fingerprint }}

@@ -180,3 +180,30 @@ complete the login, then press enter to continue"
   environment:
     XDG_RUNTIME_DIR: "/run/user/{{ ansible_facts['getent_passwd'][remote_regular_user][2] }}"
 [[ end ]]
+
+[[ if .has_fingerprint ]]
+- name: Install fprintd
+  community.general.pacman:
+    name: fprintd
+    state: present
+  become: true
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Create local polkit PAM override (copy of the vendor default)
+  ansible.builtin.copy:
+    src: /usr/lib/pam.d/polkit-1
+    dest: /etc/pam.d/polkit-1
+    remote_src: true
+    force: false
+    mode: '0644'
+  become: true
+
+- name: Allow fingerprint for polkit, falling back to password
+  ansible.builtin.lineinfile:
+    path: /etc/pam.d/polkit-1
+    line: "auth       sufficient   pam_fprintd.so max-tries=2 timeout=15"
+    insertbefore: '^auth'
+    firstmatch: true
+  become: true
+[[ end ]]
+
