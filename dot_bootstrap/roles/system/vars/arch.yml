@@ -49,6 +49,7 @@ packages:
 aur_packages:
   - ttf-juliamono
   - zsh-you-should-use
+  - zapzap
 
 niri_packages:
   - kanshi

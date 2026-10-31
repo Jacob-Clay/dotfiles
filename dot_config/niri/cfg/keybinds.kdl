@@ -14,6 +14,7 @@ binds {
     Mod+Shift+Q hotkey-overlay-title="Session Menu: noctalia session" { spawn-sh "noctalia msg panel-toggle session"; }
     Mod+E hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
     Mod+G hotkey-overlay-title="Open Steam" { spawn "steam"; }
+    Mod+Z hotkey-overlay-title="Open Whatsapp: zapzap" { spawn "zapzap"; }
 
     // #"Noctalia Plugins"
     Mod+Y hotkey-overlay-title="Keybind-Cheatsheet: open panel" { spawn "noctalia" "msg" "panel-toggle" "kenn/keybind-cheatsheet:cheatsheet"; }
