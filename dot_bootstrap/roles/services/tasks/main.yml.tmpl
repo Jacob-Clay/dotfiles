@@ -1,9 +1,5 @@
 {{- /* chezmoi:template:left-delimiter=[[ right-delimiter=]] */ -}}
 ---
-[[ if eq .desktop "kde" ]]
-    - cimiefiiaegbelhefglklhhakcgmhkai  # Plasma Integration
-[[ end ]]
-
 - name: Enable and start syncthing
   ansible.builtin.systemd:
     name: "syncthing@{{ remote_regular_user }}"
@@ -112,9 +108,9 @@
     timeout: 60
   when: syncthing_needs_setup
 
-- name: Open Syncthing UI in Brave
+- name: Open Syncthing UI in Floorp
   ansible.builtin.command:
-    cmd: brave-origin-beta http://localhost:8384
+    cmd: floorp http://localhost:8384
   become: false
   when: syncthing_needs_setup
 
