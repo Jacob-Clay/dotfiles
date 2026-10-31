@@ -5,5 +5,5 @@ nvim-state/
 .config/niri/
 .config/noctalia/
 .config/kanshi/
-.local/bin/keepassxc-follow
+.config/niri-adv-rules/
 {{ end }}

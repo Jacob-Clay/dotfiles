@@ -21,3 +21,10 @@ layer-rule {
   match namespace="^noctalia-wallpaper"
   place-within-backdrop true
 }
+
+// Don't let KeePassXC dialogs pull you to KeePassXC's workspace;
+// niri-adv-rules moves them to the current workspace instead.
+window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"# title="^Unlock Database - KeePassXC$"
+    open-focused false
+}

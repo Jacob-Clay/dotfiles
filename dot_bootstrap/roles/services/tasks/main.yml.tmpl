@@ -87,6 +87,14 @@
     name: greetd
     enabled: true
   become: true
+
+- name: Build niri-adv-rules (moves KeePassXC dialogs to the current workspace)
+  ansible.builtin.command:
+    cmd: cargo install --locked --git https://github.com/MangoCubes/niri-adv-rules
+    creates: "/home/{{ remote_regular_user }}/.cargo/bin/niri-adv-rules"
+  become: true
+  become_user: "{{ remote_regular_user }}"
+
 [[ end ]]
 
 

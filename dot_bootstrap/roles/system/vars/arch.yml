@@ -58,3 +58,4 @@ niri_packages:
   - nautilus
   - capitaine-cursors
   - qt5ct
+  - rust
