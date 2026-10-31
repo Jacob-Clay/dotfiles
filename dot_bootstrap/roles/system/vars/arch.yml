@@ -1,4 +1,5 @@
 packages:
+  - floorp
   - lazygit
   - go
   - npm
@@ -46,13 +47,10 @@ packages:
   - expac
 
 aur_packages:
-  - brave-origin-beta-bin
   - ttf-juliamono
   - zsh-you-should-use
 
 niri_packages:
-  - niri
-  - noctalia
   - kanshi
   - greetd
   - noctalia-greeter

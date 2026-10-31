@@ -1,28 +1,5 @@
 {{- /* chezmoi:template:left-delimiter=[[ right-delimiter=]] */ -}}
 ---
-- name: Ensure chromium extensions directory exists
-  ansible.builtin.file:
-    path: /usr/share/chromium/extensions
-    state: directory
-    mode: '0755'
-  become: true
-
-- name: Install Brave extension JSON files
-  ansible.builtin.copy:
-    content: |
-      {
-        "external_update_url": "https://clients2.google.com/service/update2/crx"
-      }
-    dest: "/usr/share/chromium/extensions/{{ item }}.json"
-    mode: '0644'
-  become: true
-  loop:
-    - gebbhagfogifgggkldgodflihgfeippi  # Return YouTube Dislike
-    - mnjggcdmjocbbbhaepdhchncahnbgone  # SponsorBlock for YouTube
-    - dhdgffkkebhmkfjojejmpbldmpobfkfo  # Tampermonkey
-    - aejbmaihhlajphnlcdbojkjbdckkfdki  # Video Speed Control
-    - bkkmolkhemgaeaeggcmfbghljjjoofoh  # Catppuccin Mocha theme
-    - oboonakemofpalcgghocfoadofidjkkk  # KeePassXC-Browser
 [[ if eq .desktop "kde" ]]
     - cimiefiiaegbelhefglklhhakcgmhkai  # Plasma Integration
 [[ end ]]
