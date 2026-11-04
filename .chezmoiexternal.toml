@@ -1,0 +1,14 @@
+# Catppuccin port for spicetify, pinned so every machine gets the same files.
+# To update: swap the SHA for the latest commit on github.com/catppuccin/spicetify
+[".config/spicetify/Themes/catppuccin"]
+    type = "archive"
+    url = "https://github.com/catppuccin/spicetify/archive/1ec645c4cf7f42f9792b9eeb1bb7930f94593277.tar.gz"
+    stripComponents = 2
+    include = ["*/catppuccin/**"]
+
+# Spicetify Marketplace custom app, pinned to a release.
+# To update: bump the version in the URL (github.com/spicetify/marketplace/releases)
+[".config/spicetify/CustomApps/marketplace"]
+    type = "archive"
+    url = "https://github.com/spicetify/marketplace/releases/download/v1.0.12/marketplace.zip"
+    stripComponents = 1

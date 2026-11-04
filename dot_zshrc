@@ -72,7 +72,6 @@ alias la="eza -lah --icons --git"
 
 export FZF_BASE=/usr/share/fzf
 eval "$(register-python-argcomplete pipx)"
-export PATH=$PATH:$HOME/.spicetify
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export EDITOR=nvim

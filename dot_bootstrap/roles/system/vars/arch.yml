@@ -14,6 +14,7 @@ packages:
   - imagemagick
   - tree-sitter-cli
   - keepassxc
+  - spotify-launcher
   - syncthing
   - tailscale
   - zoxide
@@ -50,6 +51,7 @@ aur_packages:
   - ttf-juliamono
   - zsh-you-should-use
   - zapzap
+  - spicetify-cli
 
 niri_packages:
   - kanshi

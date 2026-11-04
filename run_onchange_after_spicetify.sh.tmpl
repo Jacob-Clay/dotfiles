@@ -1,0 +1,25 @@
+#!/bin/sh
+# Re-run when the theme pin changes: {{ include ".chezmoiexternal.toml" | sha256sum }}
+#
+# Spicetify config: Catppuccin Mocha, Spotify installed by spotify-launcher.
+
+set -e
+
+if ! command -v spicetify >/dev/null 2>&1; then
+  echo "spicetify not installed, skipping"
+  exit 0
+fi
+
+# spotify-launcher installs Spotify per-user, so spicetify can't auto-detect it.
+# Must be an absolute path: spicetify doesn't expand ~ in config values.
+spicetify config spotify_path "$HOME/.local/share/spotify-launcher/install/usr/share/spotify"
+spicetify config current_theme catppuccin color_scheme mocha
+spicetify config inject_css 1 inject_theme_js 1 replace_colors 1 overwrite_assets 1
+spicetify config custom_apps marketplace
+
+# Spotify only exists after spotify-launcher has run once.
+if [ -f "$HOME/.config/spotify/prefs" ]; then
+  spicetify backup apply
+else
+  echo "Spotify not set up yet: launch it once, close it, then run: spicetify backup apply"
+fi
