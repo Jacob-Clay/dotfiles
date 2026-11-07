@@ -25,6 +25,7 @@ packages:
   - eza
   - neovim
   - paru
+  - kdeconnect
   # Fonts used by kitty and noctalia
   - ttf-meslo-nerd
 
@@ -62,3 +63,6 @@ niri_packages:
   - capitaine-cursors
   - qt5ct
   - rust
+
+niri_aur_packages:
+  - qt6ct-kde

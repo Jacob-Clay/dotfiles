@@ -4,7 +4,7 @@
   with_first_found:
     - "{{ ansible_facts['distribution'] | lower }}.yml"
     - "{{ ansible_facts['os_family'] | lower }}.yml"
-    - "arch.yml"  # fallback for cachyos, endeavouros etc
+    - "arch.yml" # fallback for cachyos, endeavouros etc
 
 - name: Update package cache and install (Arch)
   community.general.pacman:
@@ -17,7 +17,7 @@
   community.general.pacman:
     name: "{{ niri_packages }}"
     state: present
-  when: 
+  when:
     - ansible_facts['os_family'] == "Archlinux"
     - desktop == "niri"
 
@@ -36,6 +36,16 @@
     use: paru
   become: false
   when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install niri AUR packages
+  kewlfft.aur.aur:
+    name: "{{ niri_aur_packages }}"
+    state: present
+    use: paru
+  become: false
+  when:
+    - ansible_facts['os_family'] == "Archlinux"
+    - desktop == "niri"
 
 - name: Remove passwordless pacman rule
   ansible.builtin.file:

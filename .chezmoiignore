@@ -6,4 +6,5 @@ nvim-state/
 .config/noctalia/
 .config/kanshi/
 .config/niri-adv-rules/
+.config/qt6ct/
 {{ end }}
