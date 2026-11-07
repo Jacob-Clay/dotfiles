@@ -61,7 +61,6 @@ niri_packages:
   - accountsservice # user avatars on the login screen
   - nautilus
   - capitaine-cursors
-  - qt5ct
   - rust
 
 niri_aur_packages:
